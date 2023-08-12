@@ -52,8 +52,11 @@ def handle_message(event):
     user_name = profile.display_name #使用者名稱
    
 ############################ 使用說明 選單 最新油價############################
-    if message_text == '@使用說明':
-        about_us_event(event)
+    if message_text == '熊哥幫幫我':
+        flex_message = about_us_event(event)
+        line_bot_api.reply_message(
+            event.reply_token,
+            flex_message)
 
     if event.message.text == "想知道油價":
         content = oil_price()
