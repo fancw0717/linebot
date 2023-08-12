@@ -5,32 +5,42 @@ def about_us_event(event):
     emoji = [
             {
                 "index":0,
-                "productId":"5ac1bfd5040ab15980c9b435",
-                "emojiID":"082"
+                "productId":"5ac2213e040ab15980c9b447",
+                "emojiID":"035"
             },
             {
-                "index":17,
+                "index":11,
+                "productId":"5ac2213e040ab15980c9b4475",
+                "emojiID":"035"
+            },
+            {
+                "index":23,
                 "productId":"5ac1bfd5040ab15980c9b435",
-                "emojiID":"082"
+                "emojiID":"091"
+
+            },
+            {
+                "index":26,
+                "productId":"5ac22c9e031a6752fb806d68",
+                "emojiID":"042"
+
             }
         ]
-    text_message = TextSendMessage(text='''$ Master Finance $
-Hello! 您好，歡迎您成為 Master Finance的好友!
+    text_message = TextSendMessage(text='''$ 歡迎加入 熊安心 $
+我是您最安心的小幫手 $ 熊哥
 
-我是Master財經小幫手
+$ 機車 相關資訊都可以在這裡找到
+點選下方【選單】開始安心上路
 
--這裡有股票，匯率資訊喔~
--直接點選下方【圖中】選單功能  
-
--期待您的光臨!''', emojis=emoji)
+---加入熊安心 騎車更安心---''', emojis=emoji)
 
     sticker_message = StickerSendMessage(
-        package_id='11537',
-        sticker_id='52002738'
+        package_id='6632',
+        sticker_id='11825396'
     )
 
     buttons_template = TemplateSendMessage(
-        alt_text='小幫手 template',
+        alt_text='小幫手 熊哥',
         template=ButtonsTemplate(
             title = '請選擇服務',
             text = '請選擇',
@@ -55,25 +65,3 @@ Hello! 您好，歡迎您成為 Master Finance的好友!
         event.reply_token,
         [text_message, sticker_message, buttons_template])
     
-def push_msg(event, msg):
-    try:
-        user_id = event.source.user_id
-        line_bot_api.push_message(user_id, TextSendMessage(text=msg))
-    except:
-        room_id = event.source.room_id
-        line_bot_api.push_message(room_id, TextSendMessage(text=msg))
-
-def Usage(event):
-    push_msg(event, "  🔎🔎 查 詢 方 法 🔎🔎  \
-                    \n\
-                    \n💁小幫手可以查詢\
-                    \n ⭐油價⭐匯率⭐股價\
-                    \n\
-                    \n📍油價通知\
-                    \n  👉輸入查詢油價\
-                    \n\
-                    \n📍匯率兌換\
-                    \n  👉換匯USD/TWD\
-                    \n\
-                    \n📍股價查詢\
-                    \n  👉輸入#股票代號")
