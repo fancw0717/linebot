@@ -5,6 +5,7 @@ from events.oil import *
 from events.news import *
 from events.Msg_Template import *
 from events.EXRate import *
+from events.map import *
 from model.mongodb import *
 import re
 import twstock
@@ -63,6 +64,9 @@ def handle_message(event):
             TextSendMessage(text=news_content)
         )
 
+    if messages_text == '附近資訊':
+        goole_map(event)  
+    
     if event.message.text == "想知道油價":
         content = oil_price()
         line_bot_api.reply_message(
