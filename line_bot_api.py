@@ -7,7 +7,6 @@ from linebot.models import *
 app = Flask(__name__)
 
 #Channel access token #在line Developers的providers的Basic settings
-line_bot_api = LineBotApi('cnaDYjmpA18litOws+4t7x/j/PJXiiZJhhrkkYokCf+V0MyQXbeANnpb4A3pwOsBXy5ZqU4MmkK0+RgWPcdMpUnU4vVvWxNUDxplTFmn22oTMXObi4SoM7VugLAnEhz4iLFad39QjB0IDUK8M+94pQdB04t89/1O/w1cDnyilFU=')
-
+line_bot_api = LineBotApi('Fgm1PZljto93lSH0NGfZcisx1YapoloDzRIcm4yUpWRt1luWNX+Ap6A1IcFGGOHpFOKRhMJ5olMurHOH1ylvR3fkOKsxR29KxeURfRj0/vRlZoHdylq+Vt+DQPAyE6vU4pOtZIkh0YTnZniBPYxrKAdB04t89/1O/w1cDnyilFU=')
 #Channel secret  #在line Developers的providers的Messaging API
-handler = WebhookHandler('d5d1d84e419c4bcfa7d6a092a6de9339')
+handler = WebhookHandler('b4d0c49e7ac03e0fdcc331ab66600c0e')
