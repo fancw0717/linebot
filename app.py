@@ -53,10 +53,8 @@ def handle_message(event):
    
 ############################ 使用說明 選單 最新油價############################
     if message_text == '熊哥幫幫我':
-        flex_message = about_us_event(event)
-        line_bot_api.reply_message(
-            event.reply_token,
-            flex_message)
+        about_us_event(event)
+     
 
     if event.message.text == "想知道油價":
         content = oil_price()
