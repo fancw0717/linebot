@@ -2,6 +2,7 @@
 from line_bot_api import *
 from events.basic import *
 from events.oil import *
+from events.news import *
 from events.Msg_Template import *
 from events.EXRate import *
 from model.mongodb import *
@@ -54,7 +55,13 @@ def handle_message(event):
 ############################ 使用說明 選單 最新油價############################
     if message_text == '熊哥幫幫我':
         about_us_event(event)
-     
+    
+    if message_text == '最新消息':
+        news_content = get_latest_news()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=news_content)
+        )
 
     if event.message.text == "想知道油價":
         content = oil_price()
