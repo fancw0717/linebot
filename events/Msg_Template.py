@@ -46,242 +46,64 @@ def stock_reply_other(stockNumber): #stockNumber
         ))
     return text_message
 
-# 速克達Button
-def show_Button():
+def show_sk1_Button():
     flex_message = FlexSendMessage(
-            alt_text="速克達",
-            contents={
-  "type": "carousel",
-  "contents": [
-    {
-      "type": "bubble",
-      "hero": {
-        "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w644/bike-models/May2023/DfE3hPr967G58vDt5VuK.png",
-        "size": "3xl"
-      },
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "SYM Jet",
-            "size": "xl",
-            "align": "center"
-          }
-        ],
-        "alignItems": "center"
-      },
-      "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "button",
-            "action": {
-              "type": "uri",
-              "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/sym-jet-sl-2023"
-            },
-            "style": "primary",
-            "color": "#005AB5"
-          }
-        ]
-      },
-      "size": "deca",
-      "styles": {
-        "header": {
-          "separatorColor": "#00CACA",
-          "backgroundColor": "#00CACA"
+        alt_text="速克達",
+        contents={
+            "type": "carousel",
+            "contents": [
+                {
+                    "type": "bubble",
+                    "hero": {
+                        "type": "image",
+                        "url": "https://autos.yahoo.com.tw/p/r/w644/bike-models/May2023/DfE3hPr967G58vDt5VuK.png",
+                        "size": "3xl"
+                    },
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "SYM Jet",
+                                "size": "xl",
+                                "align": "center"
+                            }
+                        ],
+                        "alignItems": "center"
+                    },
+                    "footer": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "uri",
+                                    "label": "👉 點 我 賞 車",
+                                    "uri": "https://autos.yahoo.com.tw/new-bikes/model/sym-jet-sl-2023"
+                                },
+                                "style": "primary",
+                                "color": "#005AB5"
+                            }
+                        ]
+                    },
+                    "size": "deca",
+                    "styles": {
+                        "header": {
+                            "separatorColor": "#00CACA",
+                            "backgroundColor": "#00CACA"
+                        }
+                    }
+                },
+                # 在這裡添加其他卡片的資訊，每個卡片類似上面的格式
+            ]
         }
-      }
-    },
-    {
-      "type": "bubble",
-      "size": "deca",
-      "hero": {
-        "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/January2023/pFUsL0xCiz9UetyFNxGf.jpg",
-        "size": "3xl"
-      },
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "SYM 迪爵Duke",
-            "size": "xl",
-            "align": "center"
-          }
-        ],
-        "alignItems": "center"
-      },
-      "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "button",
-            "action": {
-              "type": "uri",
-              "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/sym-%E8%BF%AA%E7%88%B5duke-2023"
-            },
-            "style": "primary",
-            "color": "#005AB5"
-          }
-        ]
-      },
-      "styles": {
-        "header": {
-          "separatorColor": "#00CACA",
-          "backgroundColor": "#00CACA"
-        }
-      }
-    },
-    {
-      "type": "bubble",
-      "size": "deca",
-      "hero": {
-        "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/April2023/XeHcJwfD55MOTMxVFjWx.jpg",
-        "size": "3xl"
-      },
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "Kymco GP",
-            "size": "xl",
-            "align": "center"
-          }
-        ],
-        "alignItems": "center"
-      },
-      "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "button",
-            "action": {
-              "type": "uri",
-              "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/kymco-gp-2023"
-            },
-            "style": "primary",
-            "color": "#005AB5"
-          }
-        ]
-      },
-      "styles": {
-        "header": {
-          "separatorColor": "#00CACA",
-          "backgroundColor": "#00CACA"
-        }
-      }
-    },
-    {
-      "type": "bubble",
-      "size": "deca",
-      "hero": {
-        "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/June2023/Tiv2HnckKQGVEbCb5yvf.png",
-        "size": "3xl"
-      },
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "SYM CLBCU",
-            "size": "xl",
-            "align": "center"
-          }
-        ],
-        "alignItems": "center"
-      },
-      "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "button",
-            "action": {
-              "type": "uri",
-              "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/sym-clbcu-2023"
-            },
-            "style": "primary",
-            "color": "#005AB5"
-          }
-        ]
-      },
-      "styles": {
-        "header": {
-          "separatorColor": "#00CACA",
-          "backgroundColor": "#00CACA"
-        }
-      }
-    },
-    {
-      "type": "bubble",
-      "size": "deca",
-      "hero": {
-        "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/April2023/zrOl106LVIBMmp0Dyi79.png",
-        "size": "3xl"
-      },
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "SYM DRG",
-            "size": "xl",
-            "align": "center"
-          }
-        ],
-        "alignItems": "center"
-      },
-      "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "button",
-            "action": {
-              "type": "uri",
-              "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/sym-drg-2023"
-            },
-            "style": "primary",
-            "color": "#005AB5"
-          }
-        ]
-      },
-      "styles": {
-        "header": {
-          "separatorColor": "#00CACA",
-          "backgroundColor": "#00CACA"
-        }
-      }
-    }
-  ]
-}
-                    
     )
     return flex_message
 
-
 # 幣別種類Button
-def show_sk1_Button():
+def show_Button():
     flex_message = FlexSendMessage(
             alt_text="幣別種類",
             contents={

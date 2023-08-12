@@ -62,7 +62,11 @@ def handle_message(event):
             TextSendMessage(text=content))
         
     if message_text == '速克達':
-        show_sk1_Button()
+        flex_message = show_sk1_Button()  # 使用 show_sk1_Button() 來取得 Flex Message 物件
+        line_bot_api.reply_message(
+            event.reply_token,
+            flex_message
+        )
 
         
 ############################ 使用說明 選單 股票看板 ############################
