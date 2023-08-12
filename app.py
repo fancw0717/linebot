@@ -64,7 +64,7 @@ def handle_message(event):
             TextSendMessage(text=news_content)
         )
 
-    if messages_text == '附近資訊':
+    if message_text == '附近資訊':
         goole_map(event)  
     
     if event.message.text == "想知道油價":
