@@ -96,6 +96,12 @@ def handle_message(event):
             event.reply_token,
             TextMessage(text=reply_text)
         )
+    if event.message.text == '當前位置':
+        latitude = event.message.latitude
+        longitude = event.message.longitude
+        map_url = f"https://www.google.com/maps?q={latitude},{longitude}"
+        reply_message = TextSendMessage(text=f"您的位置：{map_url}")
+        line_bot_api.reply_message(event.reply_token, reply_message)
 #—————————————————————————————————————————————————————————————————————————————————
 
     if event.message.text == "想知道油價":
