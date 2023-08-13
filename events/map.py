@@ -39,8 +39,15 @@ def get_user_location(user_id, api_key):
     response = requests.post(base_url, json={})
     data = response.json()
 
+    # if "location" in data:
+    #     return f"{data['location']['lat']},{data['location']['lng']}"
+
     if "location" in data:
-        return f"{data['location']['lat']},{data['location']['lng']}"
+        location_lat = data['location']['lat']
+        location_lng = data['location']['lng']
+        print(f"使用者 {user_id} 的地點：緯度 {location_lat}, 經度 {location_lng}")
+        return f"{location_lat},{location_lng}"
+    
     else:
         print("無法獲取使用者地點。")
         return None
