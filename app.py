@@ -103,17 +103,9 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, reply_message)
 
     if event.message.text == '附近停車場':
-        # 此處省略 API 金鑰的取得
-        reply_text = "請點選下方的「傳送地理位置」按鈕，以獲取附近停車場資訊。"
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextMessage(text=reply_text),
-        )
-        line_bot_api.reply_message(
-            event.reply_token,
-            buttons_map  # 顯示選單
-        )
-    elif isinstance(event.message, LocationMessage):
+        user_id = event.source.user_id
+        api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
+       
         latitude = event.message.latitude
         longitude = event.message.longitude
         user_location = f"{latitude},{longitude}"
