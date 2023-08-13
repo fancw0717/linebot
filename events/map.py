@@ -34,7 +34,7 @@ def google_map(event):
     )
 
 
-def geocode_user_location(user_id, api_key):
+def get_user_location(user_id, api_key):
     base_url = f"https://www.googleapis.com/geolocation/v1/geolocate?key={api_key}"
     response = requests.post(base_url, json={})
     data = response.json()
