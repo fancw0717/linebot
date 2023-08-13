@@ -106,7 +106,7 @@ def handle_message(event):
         user_id = event.source.user_id
         api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
 
-        user_location = get_user_location(user_id, api_key)
+        user_location = "25.033964,121.564472"  # 台北市的緯度和經度
         if user_location:
             radius = 1000
 
