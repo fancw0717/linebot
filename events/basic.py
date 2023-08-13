@@ -38,100 +38,99 @@ def aboutMethodButton():
     flex_message = FlexSendMessage(
         alt_text="我是小幫手熊哥",
         contents={
-          "type": "bubble",
-          "hero": {
-            "type": "image",
-            "url": "https://i.imgur.com/OIFNBzD.jpg",
-            "size": "full",
-            "aspectRatio": "20:13",
-            "aspectMode": "cover"
-          },
-          "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "text",
-                "text": "我 是 小 幫 手 🐻 熊 哥",
-                "weight": "bold",
-                "size": "xl",
-                "align": "center"
+        "type": "bubble",
+        "hero": {
+          "type": "image",
+          "url": "https://i.imgur.com/OIFNBzD.jpg",
+          "size": "full",
+          "aspectRatio": "20:13",
+          "aspectMode": "cover"
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "我 是 小 幫 手 🐻 熊 哥",
+              "weight": "bold",
+              "size": "xl",
+              "align": "center"
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "margin": "md",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "👇 請 選 擇 服 務 項 目 👇",
+                  "size": "lg",
+                  "color": "#999999",
+                  "align": "center"
+                }
+              ]
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "button",
+              "style": "primary",
+              "action": {
+                "type": "message",
+                "label": "📰  最 新 消 息",
+                "text": "最新消息"
               },
-              {
-                "type": "box",
-                "layout": "baseline",
-                "margin": "md",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "👇 請 選 擇 服 務 項 目 👇",
-                    "size": "lg",
-                    "color": "#999999",
-                    "align": "center"
-                  }
-                ]
-              }
-            ]
-          },
-          "footer": {
-            "type": "box",
-            "layout": "vertical",
-            "spacing": "sm",
-            "contents": [
-              {
-                "type": "button",
-                "style": "primary",
-                "action": {
-                  "type": "message",
-                  "label": "📰  最 新 消 息",
-                  "text": "最新消息"
-                },
-                "color": "#5B9A8B"
+              "color": "#5B9A8B"
+            },
+            {
+              "type": "button",
+              "style": "primary",
+              "action": {
+                "type": "message",
+                "label": "👍 各 品 牌 機 車 官 網 ",
+                "text": "各品牌機車官網 "
               },
-              {
-                "type": "button",
-                "style": "primary",
-                "action": {
-                  "type": "message",
-                  "label": "👍 各 品 牌 機 車 官 網 ",
-                  "text": "請選擇機車品牌"
-                },
-                "color": "#5B9A8B"
+              "color": "#5B9A8B"
+            },
+            {
+              "type": "button",
+              "action": {
+                "type": "message",
+                "label": "🏍 我 想 看 機 車",
+                "text": "我想看機車"
               },
-              {
-                "type": "button",
-                "action": {
-                  "type": "message",
-                  "label": "🏍 我 想 看 機 車",
-                  "text": "我想看機車"
-                },
-                "style": "primary",
-                "color": "#5B9A8B"
+              "style": "primary",
+              "color": "#5B9A8B"
+            },
+            {
+              "type": "button",
+              "action": {
+                "type": "message",
+                "label": "💬 網 友 最 新 話 題",
+                "text": "網友都在聊什麼"
               },
-              {
-                "type": "button",
-                "action": {
-                  "type": "message",
-                  "label": "💬 網 友 最 新 話 題",
-                  "text": "網友都在聊......"
-                },
-                "style": "primary",
-                "color": "#5B9A8B"
+              "style": "primary",
+              "color": "#5B9A8B"
+            },
+            {
+              "type": "button",
+              "action": {
+                "type": "message",
+                "label": "📍 附 近 相 關 支 援",
+                "text": "附近相關支援"
               },
-              {
-                "type": "button",
-                "action": {
-                  "type": "message",
-                  "label": "📍 附 近 相 關 支 援",
-                  "text": "附近相關支援"
-                },
-                "style": "primary",
-                "color": "#5B9A8B"
-              }
-            ],
-            "flex": 0
-          }
+              "style": "primary",
+              "color": "#5B9A8B"
+            }
+          ],
+          "flex": 0
         }
-
+      }
     )
     return flex_message
