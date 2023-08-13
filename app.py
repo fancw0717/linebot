@@ -75,7 +75,7 @@ def handle_message(event):
 #—————————————————————————————————————————————————————————————————————————————————
     if event.message.text == '附近停車場':
         user_id = event.source.user_id
-        api_key = "YOUR_GOOGLE_MAPS_API_KEY"
+        api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
 
         user_location = geocode_user_location(user_id, api_key)
         if user_location:
