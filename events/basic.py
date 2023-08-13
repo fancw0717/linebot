@@ -31,10 +31,12 @@ def about_us_event(event):
     buttons_template = TemplateSendMessage(
         ## no
     )
+
+    aboutMethodMessage = aboutMethodButton()
     
     line_bot_api.reply_message(
         event.reply_token,
-        [text_message, sticker_message])
+        [text_message, sticker_message, aboutMethodMessage])
 
 def aboutMethodButton():
     flex_message = FlexSendMessage(
