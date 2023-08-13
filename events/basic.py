@@ -92,9 +92,9 @@ def aboutMethodButton():
         "type": "button",
         "style": "primary",
         "action": {
-          "type": "uri",
-          "label": "👍 MOTO 熊 機 車 官 網",
-          "uri": "https://a8602016.github.io/index.html"
+          "type": "message",
+          "label": "👍 各 品 牌 機 車 官 網 ",
+          "text": "請選擇機車品牌"
         },
         "color": "#5B9A8B"
       },
