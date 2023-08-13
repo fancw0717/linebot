@@ -79,7 +79,7 @@ def handle_message(event):
 
         user_location = geocode_user_location(user_id, api_key)
         if user_location:
-            radius = 1000
+            radius = 5000
 
             nearby_parking = search_nearby_parking(user_location, radius, api_key)
             
