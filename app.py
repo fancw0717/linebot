@@ -106,7 +106,7 @@ def handle_message(event):
         user_id = event.source.user_id
         api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
 
-        user_location = f"{event.message.latitude},{event.message.longitude}"
+        user_location = f"{latitude},{longitude}"
         if user_location:
             radius = 1000
 
