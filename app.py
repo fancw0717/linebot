@@ -108,6 +108,10 @@ def handle_message(event):
        
         latitude = event.message.latitude
         longitude = event.message.longitude
+
+        # user_location = get_user_location(user_id, api_key)
+        # user_location = "25.033964,121.564472"  # 台北市的緯度和經度
+        
         user_location = f"{latitude},{longitude}"
         if user_location:
             radius = 1000
