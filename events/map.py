@@ -33,6 +33,8 @@ def google_map(event):
         [buttons_map]
     )
 
+    import requests
+
 def search_nearby_parking(location, radius, api_key):
     base_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
     params = {
