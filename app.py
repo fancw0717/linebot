@@ -103,16 +103,24 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, reply_message)
 
     if event.message.text == '附近停車場':
-        user_id = event.source.user_id
-        api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
+        # 此處省略 API 金鑰的取得
+        reply_text = "請點選下方的「傳送地理位置」按鈕，以獲取附近停車場資訊。"
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextMessage(text=reply_text),
+        )
+        line_bot_api.reply_message(
+            event.reply_token,
+            buttons_map  # 顯示選單
+        )
+    elif isinstance(event.message, LocationMessage):
         latitude = event.message.latitude
         longitude = event.message.longitude
         user_location = f"{latitude},{longitude}"
         if user_location:
             radius = 1000
-
             nearby_parking = search_nearby_parking(user_location, radius, api_key)
-            
+    
             if nearby_parking:
                 reply_text = '附近的停車場有：\n'
                 for parking in nearby_parking:
@@ -123,12 +131,11 @@ def handle_message(event):
                 reply_text = '附近沒有找到停車場。'
         else:
             reply_text = '無法獲取您的地理位置。'
-
+    
         line_bot_api.reply_message(
             event.reply_token,
             TextMessage(text=reply_text)
         )
-
 #—————————————————————————————————————————————————————————————————————————————————
 
     if event.message.text == "想知道油價":
