@@ -43,6 +43,10 @@ def callback():
 
     return 'OK'
 
+@handler.add(MessageEvent, message=LocationMessage)
+def handle_location_message(event):
+    handle_message(event)
+
 #處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -66,9 +70,32 @@ def handle_message(event):
 
     if message_text == '附近資訊':
         google_map(event)  
-    
-    if message_text =='附近停車場':
-        handle_message(event)
+
+#—————————————————————————————————————————————————————————————————————————————————
+    if event.message.text == '附近停車場':
+        user_id = event.source.user_id
+        # 根據需要替換為你自己的 Google 地圖 API 金鑰
+        api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
+
+        # 假設這是使用者的地理座標（25.0330,121.5654）
+        user_location = LocationAction(label='附近停車場', text='附近停車場')
+        reply_text = '正在搜尋附近停車場...'
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text, quick_reply=QuickReply(items=[user_location])))
+
+        nearby_parking = search_nearby_parking('25.0330,121.5654', 1000, api_key)
+        
+        if nearby_parking:
+            reply_text = '附近的停車場有：\n'
+            for parking in nearby_parking:
+                name = parking['name']
+                address = parking['vicinity']
+                reply_text += f'名稱: {name}\n地址: {address}\n----------\n'
+        else:
+            reply_text = '附近沒有找到停車場。'
+
+        line_bot_api.push_message(user_id, TextSendMessage(text=reply_text))
+
+#—————————————————————————————————————————————————————————————————————————————————
 
     if event.message.text == "想知道油價":
         content = oil_price()
