@@ -281,14 +281,13 @@ def handle_message(event):
 
 @handler.add(FollowEvent)
 def handle_follow(event):
-    welcome_msg = """Hello! 您好，歡迎加入 熊安心 !
+    welcome_msg = """--MOTO熊 機車資訊站--
+我是您的小幫手 🐻熊哥
 
-我是您最安心的小幫手 阿熊
+【機車】資訊都可以在這裡找到
+點選下方【選單】選擇更多服務
 
-任何機車相關資訊都可以在這裡找到
-點選下方【選單】開始安心上路
-
-加入熊安心～騎車更安心"""
+-加入motor熊 機車資訊不漏接-"""
 
     line_bot_api.reply_message(
         event.reply_token,
