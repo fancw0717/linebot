@@ -60,7 +60,10 @@ def handle_message(event):
 ############################ 使用說明 選單 最新油價############################
     if message_text == '熊哥幫幫我':
         about_us_event(event)
-        aboutMethodButton()
+        flex_message = aboutMethodButton()
+        line_bot_api.reply_message(
+            event.reply_token,
+            flex_message)
     
     if message_text == '最新消息':
         news_content = get_latest_news()
