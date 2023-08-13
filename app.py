@@ -60,6 +60,7 @@ def handle_message(event):
 ############################ 使用說明 選單 最新油價############################
     if message_text == '熊哥幫幫我':
         about_us_event(event)
+        show_Button()
     
     if message_text == '最新消息':
         news_content = get_latest_news()
