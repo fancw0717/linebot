@@ -128,7 +128,8 @@ def about_us_event(event):
     
     line_bot_api.reply_message(
         event.reply_token,
-        [text_message, sticker_message, buttons_template])
+        [text_message, sticker_message, buttons_template],
+        alt_text="熊哥幫幫我")
     # line_bot_api.reply_message(
     #     event.reply_token,
     #     [text_message, sticker_message, buttons_template])
