@@ -73,7 +73,25 @@ def handle_message(event):
 
 #—————————————————————————————————————————————————————————————————————————————————
     if event.message.text == '附近停車場':
-        handle_message(event)
+        # 假設這是使用者的地理座標（25.0330,121.5654）
+        user_location = "25.0330,121.5654"
+        radius = 1000
+        api_key = "AIzaSyD_L0ps7XVyXnBZQQnbXr4p2seh2XbvsD0"
+        nearby_parking = search_nearby_parking(user_location, radius, api_key)
+
+        if nearby_parking:
+            reply_text = '附近的停車場有：\n'
+            for parking in nearby_parking:
+                name = parking['name']
+                address = parking['vicinity']
+                reply_text += f'名稱: {name}\n地址: {address}\n----------\n'
+        else:
+            reply_text = '附近沒有找到停車場。'
+
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextMessage(text=reply_text)
+        )
 
 #—————————————————————————————————————————————————————————————————————————————————
 
