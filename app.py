@@ -51,7 +51,7 @@ def handle_message(event):
     message_text = str(event.message.text).lower()
     msg = str(event.message.text).upper().strip() #使用者輸入的內容
     emsg = event.message.text
-    user_name = profile.display_name #使用者名稱
+    user_name = profile.display_name #使用者名稱G
    
 ############################ 使用說明 選單 最新油價############################
     if message_text == '熊哥幫幫我':
@@ -65,8 +65,11 @@ def handle_message(event):
         )
 
     if message_text == '附近資訊':
-        goole_map(event)  
+        google_map(event)  
     
+    if message_text =='附近停車場':
+        handle_message(event)
+
     if event.message.text == "想知道油價":
         content = oil_price()
         line_bot_api.reply_message(

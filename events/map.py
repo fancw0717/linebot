@@ -1,7 +1,7 @@
 from line_bot_api import *
 import requests
 
-def goole_map(event):
+def google_map(event):
     
     buttons_map = TemplateSendMessage(
             alt_text= '附近資訊',
