@@ -27,11 +27,7 @@ def about_us_event(event):
         sticker_id='11825396'
     )
     
-    line_bot_api.reply_message(
-        event.reply_token,
-        [text_message, sticker_message, buttons_template])
-
-# -------------------------------
+    
     buttons_template = TemplateSendMessage(
         {
   "type": "bubble",
@@ -128,7 +124,11 @@ def about_us_event(event):
     "flex": 0
   }
   }
-    )
+)
+    
+    line_bot_api.reply_message(
+        event.reply_token,
+        [text_message, sticker_message, buttons_template])
     # line_bot_api.reply_message(
     #     event.reply_token,
     #     [text_message, sticker_message, buttons_template])
