@@ -60,7 +60,6 @@ def handle_message(event):
 ############################ 使用說明 選單 最新油價############################
     if message_text == '熊哥幫幫我':
         about_us_event(event)
-  
     
     if message_text == '最新消息':
         news_content = get_latest_news()
@@ -76,7 +75,7 @@ def handle_message(event):
     if event.message.text == '附近停車場':
         user_id = event.source.user_id
         # 根據需要替換為你自己的 Google 地圖 API 金鑰
-        api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
+        api_key = "AIzaSyD_L0ps7XVyXnBZQQnbXr4p2seh2XbvsD0"
 
         # 假設這是使用者的地理座標（25.0330,121.5654）
         user_location = LocationAction(label='附近停車場', text='附近停車場')
@@ -281,13 +280,14 @@ def handle_message(event):
 
 @handler.add(FollowEvent)
 def handle_follow(event):
-    welcome_msg = """--MOTO熊 機車資訊站--
-我是您的小幫手 🐻熊哥
+    welcome_msg = """Hello! 您好，歡迎加入 熊安心 !
 
-【機車】資訊都可以在這裡找到
-點選下方【選單】選擇更多服務
+我是您最安心的小幫手 阿熊
 
--加入motor熊 機車資訊不漏接-"""
+任何機車相關資訊都可以在這裡找到
+點選下方【選單】開始安心上路
+
+加入熊安心～騎車更安心"""
 
     line_bot_api.reply_message(
         event.reply_token,
