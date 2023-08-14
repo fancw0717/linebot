@@ -71,67 +71,8 @@ def handle_message(event):
         google_map(event)  
 
 #—————————————————————————————————————————————————————————————————————————————————
-    # if event.message.text == '附近停車場':
-    #     user_id = event.source.user_id
-    #     api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
 
-    #     user_location = f"{event.message.latitude},{event.message.longitude}"
-    #     radius = 1000
-    #     api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
 
-    #     nearby_parking = search_nearby_parking(user_location, radius, api_key)
-                
-    #     if nearby_parking:
-    #         reply_text = '附近的停車場有：\n'
-    #         for parking in nearby_parking:
-    #             name = parking['name']
-    #             address = parking['vicinity']
-    #             reply_text += f'名稱: {name}\n地址: {address}\n----------\n'
-    #     else:
-    #         reply_text = '附近沒有找到停車場。'
-
-    #     line_bot_api.reply_message(
-    #         event.reply_token,
-    #         TextMessage(text=reply_text)
-    #     )
-
-    if event.message.text == '當前位置':
-        latitude = event.message.latitude
-        longitude = event.message.longitude
-        map_url = f"https://www.google.com/maps?q={latitude},{longitude}"
-        reply_message = TextSendMessage(text=f"您的位置：{map_url}")
-        line_bot_api.reply_message(event.reply_token, reply_message)
-
-    if event.message.text == '附近停車場':
-        user_id = event.source.user_id
-        api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
-       
-        latitude = event.message.latitude
-        longitude = event.message.longitude
-
-        # user_location = get_user_location(user_id, api_key)
-        # user_location = "25.033964,121.564472"  # 台北市的緯度和經度
-        
-        user_location = f"{latitude},{longitude}"
-        if user_location:
-            radius = 1000
-            nearby_parking = search_nearby_parking(user_location, radius, api_key)
-    
-            if nearby_parking:
-                reply_text = '附近的停車場有：\n'
-                for parking in nearby_parking:
-                    name = parking['name']
-                    address = parking['vicinity']
-                    reply_text += f'名稱: {name}\n地址: {address}\n----------\n'
-            else:
-                reply_text = '附近沒有找到停車場。'
-        else:
-            reply_text = '無法獲取您的地理位置。'
-    
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextMessage(text=reply_text)
-        )
 #—————————————————————————————————————————————————————————————————————————————————
 
     if event.message.text == "想知道油價":

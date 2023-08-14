@@ -106,22 +106,46 @@ def handle_location_message(event):
 
 # 進一步處理取得的位置資訊，例如使用 Google Maps API 來查詢地理資訊
 # ...
-
-    reply_message = f'你的位置是：緯度 {latitude}，經度 {longitude}'
     
     user_location = f"{latitude},{longitude}"
-    if user_location:
-            radius = 1000
-            nearby_parking = search_nearby_parking(user_location, radius, api_key)
+    # if user_location:
+    #         radius = 1000
+    #         nearby_parking = search_nearby_parking(user_location, radius, api_key)
     
-            if nearby_parking:
-                reply_text = '附近的停車場有：\n'
-                for parking in nearby_parking:
-                    name = parking['name']
-                    address = parking['vicinity']
-                    reply_text += f'名稱: {name}\n地址: {address}\n----------\n'
-            else:
-                reply_text = '附近沒有找到停車場。'
+    #         if nearby_parking:
+    #             reply_text = '附近的停車場有：\n'
+    #             for parking in nearby_parking:
+    #                 name = parking['name']
+    #                 address = parking['vicinity']
+    #                 reply_text += f'名稱: {name}\n地址: {address}\n----------\n'
+    #         else:
+    #             reply_text = '附近沒有找到停車場。'
+    # else:
+    #     reply_text = '無法獲取您的地理位置。'
+
+
+    selected_option = event.message.text  # 使用者選擇的選項
+
+    if user_location:
+        radius = 1000
+        if selected_option == '停車場':
+            nearby_places = search_nearby_parking(user_location, radius, 'parking', api_key)
+        elif selected_option == '加油站':
+            nearby_places = search_nearby_parking(user_location, radius, 'gas_station', api_key)
+        elif selected_option == '機車行':
+            nearby_places = search_nearby_parking(user_location, radius, 'motorcycle_repair', api_key)
+        else:
+            reply_text = '請選擇您要查詢的選項：停車場、加油站或機車行。'
+            line_bot_api.reply_message(event.reply_token, TextMessage(text=reply_text))
+
+        if nearby_places:
+            reply_text = f'附近的{selected_option}有：\n'
+            for place in nearby_places:
+                name = place['name']
+                address = place['vicinity']
+                reply_text += f'名稱: {name}\n地址: {address}\n----------\n'
+        else:
+            reply_text = f'附近沒有找到{selected_option}。'
     else:
         reply_text = '無法獲取您的地理位置。'
 
