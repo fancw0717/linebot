@@ -30,15 +30,6 @@ def callback():
 #----------------------------處理
 @handler.add(MessageEvent, message=TextMessage)
 @handler.add(MessageEvent, message=LocationMessage)
-def handle_message(event):
-    profile = line_bot_api.get_profile(event.source.user_id)
-    uid = profile.user_id
-    messages_text = str(event.message.text).lower()
-    msg = str(event.message.text).upper().strip()
-    emsg = event.message.text
-    user_name = profile.display_name
-    stockNumber = ""
-
 
       
 if __name__ == "__main__":
