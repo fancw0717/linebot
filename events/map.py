@@ -81,14 +81,14 @@ def callback():
 
 
 def handle_text_message(event):
-    if event.message.text == '我要分享位置':
-        # 讓使用者分享位置
+    message_text = str(event.message.text).lower()
+    if message_text == '我要分享位置':
         reply_message = '請點選下方的「位置」按鈕，然後選擇「傳送位置」。'
     else:
-        # 其他處理邏輯
-        reply_message = '請點擊下方按鈕來分享位置。'
-    
-    line_bot_api.reply_message(
+        # 其他處理邏輯，例如選擇附近停車場、加油站或機車行
+        # ...
+
+        line_bot_api.reply_message(
         event.reply_token,
         TextMessage(text=reply_message)
     )
