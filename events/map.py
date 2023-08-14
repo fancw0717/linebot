@@ -1,37 +1,53 @@
 from line_bot_api import *
 import requests
 import flask
-
-def google_map():
-    content_text = "附近資訊"
-    text_message = TextSendMessage(
-        text = content_text,
-        quick_reply = QuickReply(
-            items=[
-                QuickReplyButton(
-                        action = MessageAction(
-                            label="附近停車場",
-                            text = "附近停車場",
-                        )
-                ),
-                QuickReplyButton(
-                        action = MessageAction(
-                            label="附近加油站",
-                            text = "附近加油站" 
-                        )
-                ),
-                QuickReplyButton(
-                        action = MessageAction(
-                            label="附近機車行",
-                            text = "附近機車行" 
-                        )
-                )
-            ]
-        ))
+def google_map(event):
     
-    return text_message
+    buttons_map = TemplateSendMessage(
+            alt_text= '附近資訊',
+            template=ButtonsTemplate(
+                title='選擇服務',
+                text='請選擇',
+                actions=[
+                    MessageTemplateAction(
+                        label='附近停車場',
+                        text='附近停車場'
+                    ),
+                    MessageTemplateAction(
+                        label='附近加油站',
+                        text='附近加油站'
+                    ),
+                    MessageTemplateAction(
+                        label='附近機車行',
+                        text='附近機車行'
+                    ),
+                    MessageTemplateAction(
+                        label='附近美食',
+                        text='附近美食'
+                    )
+                ]
+            )
+        )
+    line_bot_api.reply_message(
+        event.reply_token, 
+        [buttons_map]
+    )
 
 
+def get_user_location(user_id, api_key):
+    base_url = f"https://www.googleapis.com/geolocation/v1/geolocate?key={api_key}"
+    response = requests.post(base_url, json={})
+    data = response.json()
+
+    if "location" in data:
+        location_lat = data['location']['lat']
+        location_lng = data['location']['lng']
+        print(f"使用者 {user_id} 的地點：緯度 {location_lat}, 經度 {location_lng}")
+        return f"{location_lat},{location_lng}"
+
+    else:
+        print("無法獲取使用者地點。")
+        return None
 
 def search_nearby_parking(location, radius, api_key):
     base_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
@@ -91,7 +107,7 @@ def handle_location_message(event):
 # 進一步處理取得的位置資訊，例如使用 Google Maps API 來查詢地理資訊
 # ...
 
-
+    reply_message = f'你的位置是：緯度 {latitude}，經度 {longitude}'
     
     user_location = f"{latitude},{longitude}"
     if user_location:
@@ -108,31 +124,6 @@ def handle_location_message(event):
                 reply_text = '附近沒有找到停車場。'
     else:
         reply_text = '無法獲取您的地理位置。'
-
-    # selected_option = event.message.text  # 使用者選擇的選項
-
-    # if user_location:
-    #     radius = 1000
-    #     if selected_option == '停車場':
-    #         nearby_places =  search_nearby_parking(user_location, radius, 'parking', api_key)
-    #     elif selected_option == '加油站':
-    #         nearby_places =  search_nearby_parking(user_location, radius, 'gas_station', api_key)
-    #     elif selected_option == '機車行':
-    #         nearby_places =  search_nearby_parking(user_location, radius, 'motorcycle_repair', api_key)
-    #     else:
-    #         reply_text = '請選擇您要查詢的選項：停車場、加油站或機車行。'
-    #         line_bot_api.reply_message(event.reply_token, TextMessage(text=reply_text))
-
-    #     if nearby_places:
-    #         reply_text = f'附近的{selected_option}有：\n'
-    #         for place in nearby_places:
-    #             name = place['name']
-    #             address = place['vicinity']
-    #             reply_text += f'名稱: {name}\n地址: {address}\n----------\n'
-    #     else:
-    #         reply_text = f'附近沒有找到{selected_option}。'
-    # else:
-    #     reply_text = '無法獲取您的地理位置。'
 
     line_bot_api.reply_message(
         event.reply_token,
