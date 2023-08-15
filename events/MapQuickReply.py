@@ -9,7 +9,7 @@ def MapAuickReply():
                 QuickReplyButton(
                         action = LocationAction(
                             label="分享位置",
-                            text = "速克達",
+                            text = "分享位置",
                         )
                 ),
             ]
