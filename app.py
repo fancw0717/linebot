@@ -6,6 +6,7 @@ from events.news import *
 from events.Msg_Template import *
 from events.EXRate import *
 from events.map import *
+from events.number import *
 from model.mongodb import *
 import re
 import twstock
@@ -169,6 +170,15 @@ def handle_message(event):
         line_bot_api.push_message(uid, btn_msg)
         return 0
     
+
+#————————————————————————————————————————————機車ptt討論版———————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+    if re.match("大家最都在討論什麼呢?", msg):
+        btn_msg = get_motor_ptt()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
 
 
 ############################ 粉絲/封鎖 訊息狀態 ############################
