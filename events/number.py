@@ -1,10 +1,10 @@
-import bs4
 import requests
+from bs4 import BeautifulSoup
 
 def get_motor_ptt():
     url = 'https://www.ptt.cc/bbs/biker/index.html'
     re = requests.get(url)
-    soup = bs4.BeautifulSoup(re.text, 'lxml')
+    soup = bs4.BeautifulSoup(re.text, 'html.parser')
     tags = soup.find_all(class_='title')[:5]
     
     for tag in tags:
