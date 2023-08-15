@@ -5,7 +5,7 @@ def get_motor_ptt():
     url = 'https://www.ptt.cc/bbs/biker/index.html'
     re = requests.get(url)
     soup = BeautifulSoup(re.text, 'html.parser')
-    tags = soup.find_all(class_='rent')
+    tags = soup.find_all(class_='r-ent')
     content_list = []  # 創建一個列表來保存標題和連結
 
     for tag in tags[:5]:
