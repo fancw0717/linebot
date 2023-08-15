@@ -175,7 +175,7 @@ def handle_message(event):
         content_list = get_motor_ptt()
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(content_list))
+            TextSendMessage(text = content_list))
 
 
 ############################ 粉絲/封鎖 訊息狀態 ############################
