@@ -1,7 +1,6 @@
 #載入LineBot所需要的套件
 from line_bot_api import *
 from events.basic import *
-from events.oil import *
 from events.news import *
 from events.Msg_Template import *
 from events.map import *
