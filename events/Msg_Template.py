@@ -45,7 +45,7 @@ def stock_reply_other(stockNumber): #stockNumber
             ]
         ))
     return text_message
-
+############################# 速克達輪播 #############################
 def show_bk1_Button():
     flex_message = FlexSendMessage(
         alt_text="速克達",
@@ -54,9 +54,10 @@ def show_bk1_Button():
   "contents": [
     {
       "type": "bubble",
+      "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w644/bike-models/May2023/DfE3hPr967G58vDt5VuK.png",
+        "url": "https://i.imgur.com/l44Eh9M.png",
         "size": "3xl"
       },
       "body": {
@@ -88,7 +89,6 @@ def show_bk1_Button():
           }
         ]
       },
-      "size": "deca",
       "styles": {
         "header": {
           "separatorColor": "#00CACA",
@@ -101,7 +101,7 @@ def show_bk1_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/January2023/pFUsL0xCiz9UetyFNxGf.jpg",
+        "url": "https://i.imgur.com/R7yWPOR.jpg",
         "size": "3xl"
       },
       "body": {
@@ -145,7 +145,7 @@ def show_bk1_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/April2023/XeHcJwfD55MOTMxVFjWx.jpg",
+        "url": "https://i.imgur.com/ttVStjr.png",
         "size": "3xl"
       },
       "body": {
@@ -189,7 +189,7 @@ def show_bk1_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/June2023/Tiv2HnckKQGVEbCb5yvf.png",
+        "url": "https://i.imgur.com/GeFJBYl.jpg",
         "size": "3xl"
       },
       "body": {
@@ -233,7 +233,7 @@ def show_bk1_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/April2023/zrOl106LVIBMmp0Dyi79.png",
+        "url": "https://i.imgur.com/e3ChRXI.png",
         "size": "3xl"
       },
       "body": {
@@ -288,7 +288,7 @@ def show_bk2_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/November2022/2pBDh1sDX3e86UEjZekY.jpg",
+        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/January2023/RDDhaesT6lJeipSdLTlq.jpg",
         "size": "3xl"
       },
       "body": {
@@ -297,7 +297,7 @@ def show_bk2_Button():
         "contents": [
           {
             "type": "text",
-            "text": "Honda CBR650",
+            "text": "Honda CBR500",
             "size": "xl",
             "align": "center"
           }
@@ -313,7 +313,7 @@ def show_bk2_Button():
             "action": {
               "type": "uri",
               "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/honda-cbr650-2023"
+              "uri": "https://autos.yahoo.com.tw/new-bikes/model/honda-cbr500-2023"
             },
             "style": "primary",
             "color": "#005AB5"
@@ -358,6 +358,50 @@ def show_bk2_Button():
               "type": "uri",
               "label": "👉 點 我 賞 車",
               "uri": "https://autos.yahoo.com.tw/new-bikes/model/kawasaki-ninja-2023"
+            },
+            "style": "primary",
+            "color": "#005AB5"
+          }
+        ]
+      },
+      "styles": {
+        "header": {
+          "separatorColor": "#00CACA",
+          "backgroundColor": "#00CACA"
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "deca",
+      "hero": {
+        "type": "image",
+        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/November2022/2pBDh1sDX3e86UEjZekY.jpg",
+        "size": "3xl"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Honda CBR650",
+            "size": "xl",
+            "align": "center"
+          }
+        ],
+        "alignItems": "center"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "👉 點 我 賞 車",
+              "uri": "https://autos.yahoo.com.tw/new-bikes/model/honda-cbr650-2023"
             },
             "style": "primary",
             "color": "#005AB5"
@@ -458,50 +502,6 @@ def show_bk2_Button():
           "backgroundColor": "#00CACA"
         }
       }
-    },
-    {
-      "type": "bubble",
-      "size": "deca",
-      "hero": {
-        "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/January2023/RDDhaesT6lJeipSdLTlq.jpg",
-        "size": "3xl"
-      },
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "Honda CBR500",
-            "size": "xl",
-            "align": "center"
-          }
-        ],
-        "alignItems": "center"
-      },
-      "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "button",
-            "action": {
-              "type": "uri",
-              "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/honda-cbr500-2023"
-            },
-            "style": "primary",
-            "color": "#005AB5"
-          }
-        ]
-      },
-      "styles": {
-        "header": {
-          "separatorColor": "#00CACA",
-          "backgroundColor": "#00CACA"
-        }
-      }
     }
   ]
 }
@@ -565,7 +565,7 @@ def show_bk3_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/November2022/cNnbIKpWQvekNKpH9BmB.jpg",
+        "url": "https://i.imgur.com/epMmL1L.jpg",
         "size": "3xl"
       },
       "body": {
@@ -609,7 +609,7 @@ def show_bk3_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/November2022/TzhhAxInlcWS208GslNj.jpg",
+        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/September2022/CnTyqRCsQdqLI82xSInD.jpeg",
         "size": "3xl"
       },
       "body": {
@@ -618,7 +618,7 @@ def show_bk3_Button():
         "contents": [
           {
             "type": "text",
-            "text": "Honda MSX",
+            "text": "Honda CB300",
             "size": "xl",
             "align": "center"
           }
@@ -634,7 +634,7 @@ def show_bk3_Button():
             "action": {
               "type": "uri",
               "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/honda-msx-grom-2023"
+              "uri": "https://autos.yahoo.com.tw/new-bikes/model/honda-cb300-2023"
             },
             "style": "primary",
             "color": "#005AB5"
@@ -697,7 +697,7 @@ def show_bk3_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/September2022/CnTyqRCsQdqLI82xSInD.jpeg",
+        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/November2022/TzhhAxInlcWS208GslNj.jpg",
         "size": "3xl"
       },
       "body": {
@@ -706,7 +706,7 @@ def show_bk3_Button():
         "contents": [
           {
             "type": "text",
-            "text": "Honda CB300",
+            "text": "Honda MSX",
             "size": "xl",
             "align": "center"
           }
@@ -722,7 +722,7 @@ def show_bk3_Button():
             "action": {
               "type": "uri",
               "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/honda-cb300-2023"
+              "uri": "https://autos.yahoo.com.tw/new-bikes/model/honda-msx-grom-2023"
             },
             "style": "primary",
             "color": "#005AB5"
@@ -754,7 +754,7 @@ def show_bk4_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/November2022/vrVlNHjboou5P77nYA4O.jpg",
+        "url": "https://i.imgur.com/dwmxDru.png",
         "size": "3xl"
       },
       "body": {
@@ -987,7 +987,7 @@ def show_bk5_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/April2023/PdzfzGSr2aLSbEl8pF5H.jpg",
+        "url": "https://i.imgur.com/FSkhr7b.png",
         "size": "3xl"
       },
       "body": {
@@ -1031,7 +1031,7 @@ def show_bk5_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/November2022/zpfFs2roKMFRbWrUQrmX.jpg",
+        "url": "https://i.imgur.com/3ZXZjKk.png",
         "size": "3xl"
       },
       "body": {
@@ -1075,7 +1075,7 @@ def show_bk5_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/January2023/XWDdquM4qrVsR12vvS8c.png",
+        "url": "https://i.imgur.com/OtPitCR.png",
         "size": "3xl"
       },
       "body": {
@@ -1084,7 +1084,7 @@ def show_bk5_Button():
         "contents": [
           {
             "type": "text",
-            "text": "Yamaha Tenere",
+            "text": "Ducati Desert X",
             "size": "xl",
             "align": "center"
           }
@@ -1100,7 +1100,7 @@ def show_bk5_Button():
             "action": {
               "type": "uri",
               "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/yamaha-tenere-2023"
+              "uri": "https://autos.yahoo.com.tw/new-bikes/model/ducati-desert-x-2023"
             },
             "style": "primary",
             "color": "#005AB5"
@@ -1163,7 +1163,7 @@ def show_bk5_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/April2023/RPgKv94uQhDFfFTh70YP.jpg",
+        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/January2023/XWDdquM4qrVsR12vvS8c.png",
         "size": "3xl"
       },
       "body": {
@@ -1172,7 +1172,7 @@ def show_bk5_Button():
         "contents": [
           {
             "type": "text",
-            "text": "Ducati Desert X",
+            "text": "Yamaha Tenere",
             "size": "xl",
             "align": "center"
           }
@@ -1188,7 +1188,7 @@ def show_bk5_Button():
             "action": {
               "type": "uri",
               "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/ducati-desert-x-2023"
+              "uri": "https://autos.yahoo.com.tw/new-bikes/model/yamaha-tenere-2023"
             },
             "style": "primary",
             "color": "#005AB5"
@@ -1219,139 +1219,7 @@ def show_bk6_Button():
       "size": "deca",
       "hero": {
         "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/May2023/77hagow1qppMs80EddxL.jpg",
-        "size": "3xl"
-      },
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "Suzuki V-Strom",
-            "size": "xl",
-            "align": "center"
-          }
-        ],
-        "alignItems": "center"
-      },
-      "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "button",
-            "action": {
-              "type": "uri",
-              "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/suzuki-v-strom-2023"
-            },
-            "style": "primary",
-            "color": "#005AB5"
-          }
-        ]
-      },
-      "styles": {
-        "header": {
-          "separatorColor": "#00CACA",
-          "backgroundColor": "#00CACA"
-        }
-      }
-    },
-    {
-      "type": "bubble",
-      "size": "deca",
-      "hero": {
-        "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/March2023/NyzaDusxs1hjrFMRm68O.jpeg",
-        "size": "3xl"
-      },
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "Honda Goldwing",
-            "size": "xl",
-            "align": "center"
-          }
-        ],
-        "alignItems": "center"
-      },
-      "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "button",
-            "action": {
-              "type": "uri",
-              "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/honda-goldwing-2023"
-            },
-            "style": "primary",
-            "color": "#005AB5"
-          }
-        ]
-      },
-      "styles": {
-        "header": {
-          "separatorColor": "#00CACA",
-          "backgroundColor": "#00CACA"
-        }
-      }
-    },
-    {
-      "type": "bubble",
-      "size": "deca",
-      "hero": {
-        "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/May2023/22vTIjAttgjDbDW800Sb.jpg",
-        "size": "3xl"
-      },
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "text",
-            "text": "BMW R Series",
-            "size": "xl",
-            "align": "center"
-          }
-        ],
-        "alignItems": "center"
-      },
-      "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "button",
-            "action": {
-              "type": "uri",
-              "label": "👉 點 我 賞 車",
-              "uri": "https://autos.yahoo.com.tw/new-bikes/model/bmw-r-series-2023"
-            },
-            "style": "primary",
-            "color": "#005AB5"
-          }
-        ]
-      },
-      "styles": {
-        "header": {
-          "separatorColor": "#00CACA",
-          "backgroundColor": "#00CACA"
-        }
-      }
-    },
-    {
-      "type": "bubble",
-      "size": "deca",
-      "hero": {
-        "type": "image",
-        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/May2023/nxOecNzGjgrmxM36PFjz.jpg",
+        "url": "https://i.imgur.com/eI8C53B.png",
         "size": "3xl"
       },
       "body": {
@@ -1377,6 +1245,50 @@ def show_bk6_Button():
               "type": "uri",
               "label": "👉 點 我 賞 車",
               "uri": "https://autos.yahoo.com.tw/new-bikes/model/triumph-tiger-2023"
+            },
+            "style": "primary",
+            "color": "#005AB5"
+          }
+        ]
+      },
+      "styles": {
+        "header": {
+          "separatorColor": "#00CACA",
+          "backgroundColor": "#00CACA"
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "deca",
+      "hero": {
+        "type": "image",
+        "url": "https://i.imgur.com/gmnQnb5.png",
+        "size": "3xl"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Honda Goldwing",
+            "size": "xl",
+            "align": "center"
+          }
+        ],
+        "alignItems": "center"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "👉 點 我 賞 車",
+              "uri": "https://autos.yahoo.com.tw/new-bikes/model/honda-goldwing-2023"
             },
             "style": "primary",
             "color": "#005AB5"
@@ -1421,6 +1333,94 @@ def show_bk6_Button():
               "type": "uri",
               "label": "👉 點 我 賞 車",
               "uri": "https://autos.yahoo.com.tw/new-bikes/model/honda-x-adv-2023"
+            },
+            "style": "primary",
+            "color": "#005AB5"
+          }
+        ]
+      },
+      "styles": {
+        "header": {
+          "separatorColor": "#00CACA",
+          "backgroundColor": "#00CACA"
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "deca",
+      "hero": {
+        "type": "image",
+        "url": "https://i.imgur.com/lA7yJ79.jpg",
+        "size": "3xl"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Suzuki V-Strom",
+            "size": "xl",
+            "align": "center"
+          }
+        ],
+        "alignItems": "center"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "👉 點 我 賞 車",
+              "uri": "https://autos.yahoo.com.tw/new-bikes/model/suzuki-v-strom-2023"
+            },
+            "style": "primary",
+            "color": "#005AB5"
+          }
+        ]
+      },
+      "styles": {
+        "header": {
+          "separatorColor": "#00CACA",
+          "backgroundColor": "#00CACA"
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "deca",
+      "hero": {
+        "type": "image",
+        "url": "https://autos.yahoo.com.tw/p/r/w880/bike-models/May2023/22vTIjAttgjDbDW800Sb.jpg",
+        "size": "3xl"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "BMW R Series",
+            "size": "xl",
+            "align": "center"
+          }
+        ],
+        "alignItems": "center"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "👉 點 我 賞 車",
+              "uri": "https://autos.yahoo.com.tw/new-bikes/model/bmw-r-series-2023"
             },
             "style": "primary",
             "color": "#005AB5"
