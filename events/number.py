@@ -5,9 +5,9 @@ def get_motor_ptt():
     url = 'https://www.ptt.cc/bbs/biker/index.html'
     re = requests.get(url)
     soup = BeautifulSoup(re.text, 'html.parser')
-    tags = soup.find_all(class_='title')[:5]
+    tags = soup.find_all(class_='title')
     
-    for tag in tags :
+    for tag in tags[1:6] :
         title = tag[0].text
         href = tag.find('a')[0]['href']  # 获取<a>标签中的href属性
         content = f"標題: {title}\n連結: https://www.ptt.cc{href}\n"
