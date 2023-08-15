@@ -6,9 +6,12 @@ def get_motor_ptt():
     re = requests.get(url)
     soup = BeautifulSoup(re.text, 'html.parser')
     tags = soup.find_all(class_='title')
-    
+    content_list = []  # 創建一個列表來保存標題和連結
+
     for tag in tags:
         title = tag.text
         href = tag.find('a')['href']  # 获取<a>标签中的href属性
         content = f"標題: {title}\n連結: https://www.ptt.cc{href}\n"
-    return content
+        content_list.append(content)  # 將標題和連結添加到列表中
+
+    return content_list
