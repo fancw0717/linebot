@@ -1,7 +1,7 @@
 from line_bot_api import *
 
 def MapAuickReply():
-    content_text = "附近資訊"
+    content_text = "附近支援"
     text_message = TextSendMessage(
         text = content_text,
         quick_reply = QuickReply(
