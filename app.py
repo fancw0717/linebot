@@ -176,7 +176,7 @@ def handle_message(event):
     if re.match("大家最都在討論什麼呢?", msg):
         btn_msg = get_motor_ptt()
         line_bot_api.push_message(uid, btn_msg)
-        return 0
+        return btn_msg
 
 
 ############################ 粉絲/封鎖 訊息狀態 ############################
