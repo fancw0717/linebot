@@ -7,8 +7,8 @@ def get_motor_ptt():
     soup = BeautifulSoup(re.text, 'html.parser')
     tags = soup.find_all(class_='title')
     
-    for tag in tags[1:6] :
-        title = tag[0].text
-        href = tag.find('a')[0]['href']  # 获取<a>标签中的href属性
+    for tag in tags :
+        title = tag[:5].text
+        href = tag.find('a')[:5]['href']  # 获取<a>标签中的href属性
         content = f"標題: {title}\n連結: https://www.ptt.cc{href}\n"
     return content
