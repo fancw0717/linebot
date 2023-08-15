@@ -174,10 +174,8 @@ def handle_message(event):
 #————————————————————————————————————————————機車ptt討論版———————————————————————————————————————————————————————————————————————————————————————————————————————————
 
     if re.match("大家最都在討論什麼呢?", msg):
-        content = get_motor_ptt(uid, user_name)
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=content))
+        btn_msg = get_motor_ptt()
+        line_bot_api.push_message(uid, btn_msg)
         return 0
 
 
