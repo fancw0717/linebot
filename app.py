@@ -49,7 +49,7 @@ def handle_location_message(event):
             text='請選擇以下的選項',
             actions=[
                 PostbackAction(label='附近停車場', data=f"query={user_location}&type=parking"),
-                PostbackAction(label='附近機車行', data=f"query={user_location}&type=motorcycle_repair"),
+                PostbackAction(label='附近機車行', data=f"query={user_location}&type=motorcycle_shop"),
                 PostbackAction(label='附近加油站', data=f"query={user_location}&type=gas_station")
             ]
         )
@@ -76,7 +76,7 @@ def handle_postback(event):
     if location and place_type:
         radius = 1000
         nearby_places = search_nearby_places(location, radius, place_type, api_key)
-        places_names_chinese = {'parking': '停車場', 'motorcycle_repair': '機車行', 'gas_station': '加油站'}
+        places_names_chinese = {'parking': '停車場', 'motorcycle_shop': '機車行', 'gas_station': '加油站'}
         reply_text = f"附近的{places_names_chinese[place_type]}有：\n"
 
         for place in nearby_places:
