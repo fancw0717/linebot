@@ -4,7 +4,6 @@ from events.basic import *
 from events.oil import *
 from events.news import *
 from events.Msg_Template import *
-from events.EXRate import *
 from events.map import *
 from events.number import *
 from model.mongodb import *
