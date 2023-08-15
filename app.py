@@ -172,10 +172,11 @@ def handle_message(event):
 #————————————————————————————————————————————機車ptt討論版———————————————————————————————————————————————————————————————————————————————————————————————————————————
 
     if event.message.text == "大家最近都在討論什麼呢?":
-        content = get_motor_ptt()
+        content_list = get_motor_ptt()  # 獲取前五筆資料的列表
+        reply_content = '\n'.join(content_list)  # 將列表內容合併為文字訊息
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(content))
+            TextSendMessage(text=reply_content))  # 使用TextSendMessage回覆訊息
 
 
 ############################ 粉絲/封鎖 訊息狀態 ############################
