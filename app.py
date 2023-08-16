@@ -80,7 +80,7 @@ def handle_postback(event):
     if location and place_type:
         radius = 1000
         nearby_places = search_nearby_places(location, radius, place_type, api_key)
-        places_names_chinese = {'parking': '停車場', 'motorcycle_repair': '機車行', 'gas_station': '加油站'}
+        places_names_chinese = {'parking': '停車場', 'motorcycle_repair': '機車店', 'gas_station': '加油站'}
 
         if nearby_places:
             carousel_columns = []
