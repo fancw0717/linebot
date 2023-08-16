@@ -70,7 +70,7 @@ def handle_location_message(event):
 @handler.add(PostbackEvent)
 def handle_postback(event):
     user_id = event.source.user_id
-    api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
+    api_key = "AIzaSyD_L0ps7XVyXnBZQQnbXr4p2seh2XbvsD0"
     data = event.postback.data
     queries = dict(q.split("=") for q in data.split("&"))
 
