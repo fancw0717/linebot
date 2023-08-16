@@ -126,6 +126,10 @@ def handle_message(event):
 
 
 #———————————————————————————————————————————— 圖文選單 ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+    
+    if message_text == '熊哥幫幫我':
+        about_us_event(event)
+    
     if message_text == '速克達':
         flex_message = show_bk1_Button()  # 使用 show_sk1_Button() 來取得 Flex Message 物件
         line_bot_api.reply_message(
@@ -164,12 +168,12 @@ def handle_message(event):
     
     
 #———————————————————————————————————————————— 機車QuickReply ———————————————————————————————————————————————————————————————————————————————————————————————————————————
-    if re.match("最新消息", msg):
-        btn_msg = get_latest_news()
-        line_bot_api.push_message(uid, btn_msg)
-        return 0
+    if message_text == '最新消息':
+        news_content = get_latest_news()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=news_content))
 
-    
     if re.match("機車品牌官網", msg):
         btn_msg = Official_Website()
         line_bot_api.push_message(uid, btn_msg)
