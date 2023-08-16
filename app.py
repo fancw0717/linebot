@@ -89,9 +89,9 @@ def handle_postback(event):
                 address = place.get('vicinity', '地址不詳')
                 # Construct Google Maps navigation URL
                 place_location = place['geometry']['location']
-                nav_url = f"https://www.google.com/maps/dir/?api=1&destination={place_location['latitude']},{place_location['longitude']}"
+                nav_url = f"https://www.google.com/maps/dir/?api=1&destination={place_location['lat']},{place_location['lng']}"
                 
-                static_map_url = generate_static_map_url(place_location['latitude'], place_location['longitude'], api_key)
+                static_map_url = generate_static_map_url(place_location['lat'], place_location['lng'], api_key)
                 print(static_map_url)
 
                 column = CarouselColumn(
