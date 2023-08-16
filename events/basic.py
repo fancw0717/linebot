@@ -94,7 +94,7 @@ def aboutMethodButton():
               "action": {
                 "type": "message",
                 "label": "👍 各 品 牌 機 車 官 網 ",
-                "text": "各品牌機車官網 "
+                "text": "機車品牌官網 "
               },
               "color": "#5B9A8B"
             },
@@ -113,7 +113,7 @@ def aboutMethodButton():
               "action": {
                 "type": "message",
                 "label": "💬 網 友 最 新 話 題",
-                "text": "網友都在聊什麼"
+                "text": "大家最近都在討論什麼呢?"
               },
               "style": "primary",
               "color": "#5B9A8B"
@@ -123,7 +123,7 @@ def aboutMethodButton():
               "action": {
                 "type": "message",
                 "label": "📍 附 近 相 關 支 援",
-                "text": "附近相關支援"
+                "text": "附近支援"
               },
               "style": "primary",
               "color": "#5B9A8B"
