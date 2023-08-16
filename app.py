@@ -79,7 +79,7 @@ def handle_postback(event):
     place_type = queries.get('type', '')
 
     if location and place_type:
-        radius = 1000
+        radius = 1500
         nearby_places = search_nearby_places(location, radius, place_type, api_key)
         places_names_chinese = {'parking': '停車場', 'gas_station': '加油站','motorcycle_shop':'摩托車店'}
         if nearby_places:
