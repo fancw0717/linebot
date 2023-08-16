@@ -62,7 +62,9 @@ def handle_location_message(event):
         reply_text = '無法獲取您的地理位置。'
         line_bot_api.reply_message(event.reply_token, TextMessage(text=reply_text))
 
-# Handle postback event when user selects an option
+
+#——————————————————————————————————— Handle postback event when user selects an option —————————————————————————————————————————————————————————————————————
+
 @handler.add(PostbackEvent)
 def handle_postback(event):
     user_id = event.source.user_id
@@ -77,38 +79,37 @@ def handle_postback(event):
         radius = 1000
         nearby_places = search_nearby_places(location, radius, place_type, api_key)
         places_names_chinese = {'parking': '停車場', 'motorcycle_repair': '機車行', 'gas_station': '加油站'}
-        reply_text = f"附近的{places_names_chinese[place_type]}有：\n"
 
-        for place in nearby_places:
-            name = place['name']
-            address = place.get('vicinity', '地址不詳')
-            reply_text += f'名稱: {name}\n地址: {address}\n----------\n'
-        if not nearby_places:
+        if nearby_places:
+            carousel_columns = []
+            for place in nearby_places[:10]:  # Limit to 10 due to carousel limitations
+                name = place['name']
+                address = place.get('vicinity', '地址不詳')
+                # Construct Google Maps navigation URL
+                place_location = place['geometry']['location']
+                nav_url = f"https://www.google.com/maps/dir/?api=1&destination={place_location['lat']},{place_location['lng']}"
+                
+                static_map_url = generate_static_map_url(place_location['lat'], place_location['lng'], api_key)
+                print(static_map_url)
+
+                column = CarouselColumn(
+                    text=f'名稱: {name}\n地址: {address}',
+                    actions=[
+                        URIAction(label='導航', uri=nav_url)
+                    ]
+                )
+                carousel_columns.append(column)
+
+            
+            carousel_template = CarouselTemplate(columns=carousel_columns)
+            template_message = TemplateSendMessage(
+                alt_text=f'附近的{places_names_chinese[place_type]}',
+                template=carousel_template
+            )
+            line_bot_api.reply_message(event.reply_token, template_message)
+        else:
             reply_text = f'附近沒有找到{places_names_chinese[place_type]}。'
-
-        line_bot_api.reply_message(event.reply_token, TextMessage(text=reply_text))
-
-
-    # if user_location:
-    #         radius = 1000
-    #         nearby_parking = search_nearby_parking(user_location, radius, api_key)
-    
-    #         if nearby_parking:
-    #             reply_text = '附近的停車場有：\n'
-    #             for parking in nearby_parking:
-    #                 name = parking['name']
-    #                 address = parking.get('vicinity', '地址不詳')
-    #                 #address = parking['vicinity']
-    #                 reply_text += f'名稱: {name}\n地址: {address}\n----------\n'
-    #         else:
-    #             reply_text = '附近沒有找到停車場。'
-    # else:
-    #     reply_text = '無法獲取您的地理位置。'
-
-    # line_bot_api.reply_message(
-    #     event.reply_token,
-    #     TextMessage(text=reply_text)
-    # )
+            line_bot_api.reply_message(event.reply_token, TextMessage(text=reply_text))
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
