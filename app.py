@@ -164,7 +164,12 @@ def handle_message(event):
     
     
 #———————————————————————————————————————————— 機車QuickReply ———————————————————————————————————————————————————————————————————————————————————————————————————————————
-   
+    if re.match("最新消息", msg):
+        btn_msg = get_latest_news()
+        line_bot_api.push_message(uid, btn_msg)
+        return 0
+
+    
     if re.match("機車品牌官網", msg):
         btn_msg = Official_Website()
         line_bot_api.push_message(uid, btn_msg)
