@@ -21,7 +21,7 @@ def MapAuickReply():
 
 
 
-#———————————————————————————————————————————首先是生成 Google Maps 靜態圖片 URL 的函數—————————————————————————————————————————————————————————
+#————————————————————————————————————————— 首先是生成 Google Maps 靜態圖片 URL 的函數—————————————————————————————————————————————————————————
 def generate_static_map_url(latitude, longitude, api_key):
     base_url = "https://maps.googleapis.com/maps/api/staticmap"
     parameters = {

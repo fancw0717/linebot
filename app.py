@@ -5,6 +5,7 @@ from events.news import *
 from events.Msg_Template import *
 from events.map import *
 from events.number import *
+from events.official import *
 import re
 import twstock
 import datetime
@@ -94,7 +95,7 @@ def handle_postback(event):
                 print(static_map_url)
 
                 column = CarouselColumn(
-                    text=f'名稱: {name}\n地址: {address}',
+                    text=f'⭐名稱: {name}\n📌地址: {address}',
                     actions=[
                         URIAction(label='導航', uri=nav_url)
                     ]
@@ -122,6 +123,7 @@ def handle_message(event):
     msg = str(event.message.text).upper().strip() #使用者輸入的內容
     emsg = event.message.text
     user_name = profile.display_name #使用者名稱G
+
 
 #———————————————————————————————————————————— 圖文選單 ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
     if message_text == '速克達':
@@ -162,6 +164,12 @@ def handle_message(event):
     
     
 #———————————————————————————————————————————— 機車QuickReply ———————————————————————————————————————————————————————————————————————————————————————————————————————————
+   
+    if re.match("附近支援", msg):
+        btn_msg = Official_Website()
+        line_bot_api.push_message(uid, btn_msg)
+        return 0
+   
     if re.match("我想看機車", msg):
         btn_msg = stock_reply_other()
         line_bot_api.push_message(uid, btn_msg)
