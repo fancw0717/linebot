@@ -55,7 +55,6 @@ def handle_location_message(event):
                 PostbackAction(label='🅿️停車場', data=f"query={user_location}&type=parking"),
                 PostbackAction(label='⛽加油站', data=f"query={user_location}&type=gas_station"),
                 PostbackAction(label='🍽️附近餐廳', data=f"query={user_location}&type=restaurant"),
-                #PostbackAction(label='🏥醫院', data=f"query={user_location}&type=hospital"),
                 PostbackAction(label='🛵機車行', data=f"query={user_location}&keyword=機車行")
             ]
         )
@@ -102,15 +101,15 @@ def handle_postback(event):
                 nav_url = f"https://www.google.com/maps/dir/?api=1&destination={place_location['lat']},{place_location['lng']}"
                 
                 static_map_url = generate_static_map_url(place_location['lat'], place_location['lng'], api_key)
-                print(static_map_url)
 
-                column = CarouselColumn(
-                    text=f'⭐名稱: {name}\n📌地址: {address}',
-                    actions=[
-                        URIAction(label='導航', uri=nav_url)
-                    ]
-                )
-                carousel_columns.append(column)
+            column = CarouselColumn(
+                thumbnail_image_url=static_map_url, # 加入這一行來顯示靜態地圖圖片
+                text=f'⭐{name[:25]}\n📌{address[:30]}', # 確保文字不超過60個字符
+                actions=[
+                    URIAction(label='導航', uri=nav_url)
+                ]
+            )
+            carousel_columns.append(column)
 
             
             carousel_template = CarouselTemplate(columns=carousel_columns)
