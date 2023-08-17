@@ -81,12 +81,14 @@ def handle_postback(event):
     if location and place_type:
         radius = 1000
         nearby_places = search_nearby_places(location, radius, place_type, api_key)
-        places_names_chinese = {'parking': '停車場', 'gas_station': '加油站','food':'美食','motorcycle_shop':'摩托車店'}
+        places_names_chinese = {'parking': '停車場', 'gas_station': '加油站'}
+        #places_names_chineses = ['food:美食','motorcycle_shop':'摩托車店']
         if nearby_places:
             carousel_columns = []
-            for place in nearby_places:  # Limit to 10 due to carousel limitations
+            for place in nearby_places[:10]:  # Limit to 10 due to carousel limitations
                 name = place['name']
-                address = place.get('vicinity', '地址不詳')
+                #address = place.get('vicinity', '地址不詳')
+                address = place['vicinity']
                 # Construct Google Maps navigation URL
                 place_location = place['geometry']['location']
                 nav_url = f"https://www.google.com/maps/dir/?api=1&destination={place_location['lat']},{place_location['lng']}"
@@ -101,6 +103,8 @@ def handle_postback(event):
                     ]
                 )
                 carousel_columns.append(column)
+
+
 
             
             carousel_template = CarouselTemplate(columns=carousel_columns)
