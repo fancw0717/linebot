@@ -83,13 +83,13 @@ def handle_postback(event):
     keyword = queries.get('keyword', '')
 
 
-    #if location and place_type:
     if location and (place_type or keyword):
         radius = 1000
-        places_names_chinese = {'parking': '停車場', 'gas_station': '加油站','restaurant':'餐廳','機車行':'機車行'}
+        places_names_chinese = {'parking': '停車場',
+                                 'gas_station': '加油站',
+                                 'restaurant':'餐廳',
+                                 '機車行':'機車行'}
         place_description = places_names_chinese.get(place_type) or places_names_chinese.get(keyword)
-
-        #nearby_places = search_nearby_places(location, radius, place_type, api_key)
         nearby_places = search_nearby_places(location, radius, place_type, api_key, keyword)
         
         if nearby_places:
@@ -113,16 +113,6 @@ def handle_postback(event):
                 carousel_columns.append(column)
 
             
-        #     carousel_template = CarouselTemplate(columns=carousel_columns)
-        #     template_message = TemplateSendMessage(
-        #         alt_text=f'附近的{places_names_chinese[place_type]}',
-        #         template=carousel_template
-        #     )
-        #     line_bot_api.reply_message(event.reply_token, template_message)
-        # else:
-        #     reply_text = f'附近沒有找到{places_names_chinese[place_type]}。'
-        #     line_bot_api.reply_message(event.reply_token, TextMessage(text=reply_text))
-
             carousel_template = CarouselTemplate(columns=carousel_columns)
             template_message = TemplateSendMessage(alt_text=f'附近的{place_description}', template=carousel_template)
             line_bot_api.reply_message(event.reply_token, template_message)
