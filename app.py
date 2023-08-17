@@ -52,8 +52,9 @@ def handle_location_message(event):
             actions=[
                 PostbackAction(label='附近停車場', data=f"query={user_location}&type=parking"),
                 PostbackAction(label='附近加油站', data=f"query={user_location}&type=gas_station"),
-                #PostbackAction(label='附近美食', data=f"query={user_location}&type=food")
-                PostbackAction(label='附近摩托車店', data=f"query={user_location}&type=motorcycle_shop")
+                PostbackAction(label='附近美食', data=f"query={user_location}&type=food"),
+                PostbackAction(label='附近摩托車店', data=f"query={user_location}&type=motorcycle_shop"),
+                PostbackAction(label='附近充電站', data=f"query={user_location}&type=co")
             ]
         )
         template_message = TemplateSendMessage(
@@ -81,7 +82,7 @@ def handle_postback(event):
     if location and place_type:
         radius = 1000
         nearby_places = search_nearby_places(location, radius, place_type, api_key)
-        places_names_chinese = {'parking': '停車場', 'gas_station': '加油站','motorcycle_shop':'摩托車店'}
+        places_names_chinese = {'parking': '停車場', 'gas_station': '加油站','food':'美食','motorcycle_shop':'摩托車店','co':'充電站'}
         if nearby_places:
             carousel_columns = []
             for place in nearby_places[:10]:  # Limit to 10 due to carousel limitations
