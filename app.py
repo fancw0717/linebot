@@ -81,6 +81,8 @@ def handle_postback(event):
     place_type = queries.get('type', '')
     keyword = queries.get('keyword', '')
 
+    def truncate_string(s, length):
+        return s if len(s) <= length else s[:length-3] + "..."
 
     if location and (place_type or keyword):
         radius = 1000
@@ -94,11 +96,17 @@ def handle_postback(event):
         if nearby_places:
             carousel_columns = []
             for place in nearby_places[:10]:  # Limit to 10 due to carousel limitations
-                name = place['name']
-                address = place['vicinity']
+                name = truncate_string(place['name'], 25)  # limit to 25 characters
+                address = truncate_string(place['vicinity'], 30)  # limit to 30 characters
                 # Construct Google Maps navigation URL
                 place_location = place['geometry']['location']
                 nav_url = f"https://www.google.com/maps/dir/?api=1&destination={place_location['lat']},{place_location['lng']}"
+            # for place in nearby_places[:10]:  # Limit to 10 due to carousel limitations
+            #     name = place['name']
+            #     address = place['vicinity']
+            #     # Construct Google Maps navigation URL
+            #     place_location = place['geometry']['location']
+            #     nav_url = f"https://www.google.com/maps/dir/?api=1&destination={place_location['lat']},{place_location['lng']}"
                 
                 static_map_url = generate_static_map_url(place_location['lat'], place_location['lng'], api_key)
 
