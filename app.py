@@ -47,13 +47,15 @@ def handle_location_message(event):
 
     if user_location:
         buttons_template = ButtonsTemplate(
-            title='您想查詢什麼？',
+            title='請問您想查詢附近的哪個地方呢？',
             text='請選擇以下的選項',
             actions=[
-                PostbackAction(label='附近停車場', data=f"query={user_location}&type=parking"),
-                PostbackAction(label='附近加油站', data=f"query={user_location}&type=gas_station"),
-                PostbackAction(label='附近美食', data=f"query={user_location}&type=food"),
-                PostbackAction(label='附近摩托車店', data=f"query={user_location}&type=motorcycle_shop")
+                # 注意！！！需使用GOOGLE地圖上的地點類型 https://developers.google.com/maps/documentation/places/web-service/supported_types?hl=zh-tw
+                PostbackAction(label='🅿️停車場', data=f"query={user_location}&type=parking"),
+                PostbackAction(label='⛽加油站', data=f"query={user_location}&type=gas_station"),
+                PostbackAction(label='🍽️附近餐廳', data=f"query={user_location}&type=restaurant"),
+                PostbackAction(label='🏥醫院', data=f"query={user_location}&type=hospital"),
+                PostbackAction(label='🛵機車行', data=f"query={user_location}&keyword=機車行")
             ]
         )
         template_message = TemplateSendMessage(
@@ -70,23 +72,28 @@ def handle_location_message(event):
 
 @handler.add(PostbackEvent)
 def handle_postback(event):
-    user_id = event.source.user_id
+    #user_id = event.source.user_id
     api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
     data = event.postback.data
     queries = dict(q.split("=") for q in data.split("&"))
 
     location = queries.get('query', '')
     place_type = queries.get('type', '')
+    keyword = queries.get('keyword', '')
 
-    if location and place_type:
+
+    #if location and place_type:
+    if location and (place_type or keyword):
         radius = 1000
-        nearby_places = search_nearby_places(location, radius, place_type, api_key)
-        places_names_chinese = {'parking': '停車場', 'gas_station': '加油站','food':'美食','motorcycle_shop':'摩托車店'}
+        place_description = places_names_chinese.get(place_type) or places_names_chinese.get(keyword)
+
+        #nearby_places = search_nearby_places(location, radius, place_type, api_key)
+        nearby_places = search_nearby_places(location, radius, place_type, api_key, keyword)
+        places_names_chinese = {'parking': '停車場', 'gas_station': '加油站','restaurant':'餐廳','hospital':'醫院','機車行':'機車行'}
         if nearby_places:
             carousel_columns = []
             for place in nearby_places[:10]:  # Limit to 10 due to carousel limitations
                 name = place['name']
-                #address = place.get('vicinity', '地址不詳')
                 address = place['vicinity']
                 # Construct Google Maps navigation URL
                 place_location = place['geometry']['location']
@@ -102,8 +109,6 @@ def handle_postback(event):
                     ]
                 )
                 carousel_columns.append(column)
-
-
 
             
             carousel_template = CarouselTemplate(columns=carousel_columns)
