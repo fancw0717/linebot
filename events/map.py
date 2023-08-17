@@ -37,26 +37,6 @@ def generate_static_map_url(latitude, longitude, api_key):
 
 #——————————————————————————————————————————— map相關參數 —————————————————————————————————————————————————————————
 
-# def search_nearby_places(location, radius, place_type, api_key):
-#     base_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-#     params = {
-#         "location": location,
-#         "radius": radius,
-#         "type": place_type,
-#         'keyword':keyword,
-#         "key": api_key
-#     }
-
-
-#     response = requests.get(base_url, params=params)
-#     data = response.json()
-
-#     if data['status'] == 'OK':
-#         return data['results']
-#     else:
-#         print(f"搜尋附近{place_type}失敗。狀態:", data['status'])
-#         return []
-
 def search_nearby_places(location, radius, place_type=None, api_key="", keyword=None):
     base_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
     params = {
