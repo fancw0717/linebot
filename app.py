@@ -51,10 +51,11 @@ def handle_location_message(event):
             text='請選擇以下的選項',
             actions=[
                 # 注意！！！需使用GOOGLE地圖上的地點類型 https://developers.google.com/maps/documentation/places/web-service/supported_types?hl=zh-tw
+                # 選單不得超過四個
                 PostbackAction(label='🅿️停車場', data=f"query={user_location}&type=parking"),
                 PostbackAction(label='⛽加油站', data=f"query={user_location}&type=gas_station"),
                 PostbackAction(label='🍽️附近餐廳', data=f"query={user_location}&type=restaurant"),
-                PostbackAction(label='🏥醫院', data=f"query={user_location}&type=hospital"),
+                #PostbackAction(label='🏥醫院', data=f"query={user_location}&type=hospital"),
                 PostbackAction(label='🛵機車行', data=f"query={user_location}&keyword=機車行")
             ]
         )
