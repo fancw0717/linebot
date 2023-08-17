@@ -110,6 +110,7 @@ def handle_postback(event):
             #     nav_url = f"https://www.google.com/maps/dir/?api=1&destination={place_location['lat']},{place_location['lng']}"
                 
                 static_map_url = generate_static_map_url(place_location['lat'], place_location['lng'], api_key)
+                print(static_map_url)
 
             column = CarouselColumn(
                 thumbnail_image_url=static_map_url, # 加入這一行來顯示靜態地圖圖片
