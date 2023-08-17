@@ -92,6 +92,7 @@ def handle_postback(event):
                                  '機車行':'機車行'}
         place_description = places_names_chinese.get(place_type) or places_names_chinese.get(keyword)
         nearby_places = search_nearby_places(location, radius, place_type, api_key, keyword)
+        print(f"Total nearby places: {len(nearby_places)}")
         
         if nearby_places:
             carousel_columns = []
