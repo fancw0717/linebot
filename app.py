@@ -6,6 +6,7 @@ from events.Msg_Template import *
 from events.map import *
 from events.number import *
 from events.official import *
+import requests
 import re
 import twstock
 import datetime
@@ -80,7 +81,15 @@ def handle_postback(event):
     location = queries.get('query', '')
     place_type = queries.get('type', '')
     keyword = queries.get('keyword', '')
-
+    #
+    def shorten_with_tinyurl(url):
+        api_url = "http://tinyurl.com/api-create.php?url=" + url
+        response = requests.get(api_url)
+        if response.status_code == 200:
+            return response.text
+        else:
+            raise Exception("Failed to shorten URL with TinyURL.")
+    #
     if location and (place_type or keyword):
         radius = 1000
         places_names_chinese = {'parking': '停車場',
@@ -103,9 +112,16 @@ def handle_postback(event):
                 static_map_url = generate_static_map_url(place_location['lat'], place_location['lng'], api_key)
 
 
+#
+            original_url = static_map_url  # 替换为你的长URL
+            short_url = shorten_with_tinyurl(original_url)
+#
+
+
+
             column = CarouselColumn(
-                thumbnail_image_url=static_map_url, # 加入這一行來顯示靜態地圖圖片
-                text=f'⭐{name[:30]}\n📌{address[:30]}', # 確保文字不超過60個字符
+                thumbnail_image_url=short_url, # 加入這一行來顯示靜態地圖圖片
+                text=f'⭐{name[:25]}\n📌{address[:30]}', # 確保文字不超過60個字符
                 actions=[
                     URIAction(label='導航', uri=nav_url)
                 ]
