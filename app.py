@@ -81,9 +81,6 @@ def handle_postback(event):
     place_type = queries.get('type', '')
     keyword = queries.get('keyword', '')
 
-    def truncate_string(s, length):
-        return s if len(s) <= length else s[:length-3] + "..."
-
     if location and (place_type or keyword):
         radius = 1000
         places_names_chinese = {'parking': '停車場',
@@ -92,29 +89,23 @@ def handle_postback(event):
                                  '機車行':'機車行'}
         place_description = places_names_chinese.get(place_type) or places_names_chinese.get(keyword)
         nearby_places = search_nearby_places(location, radius, place_type, api_key, keyword)
-        print(f"Total nearby places: {len(nearby_places)}")
+
         
         if nearby_places:
             carousel_columns = []
             for place in nearby_places[:10]:  # Limit to 10 due to carousel limitations
-                name = truncate_string(place['name'], 25)  # limit to 25 characters
-                address = truncate_string(place['vicinity'], 30)  # limit to 30 characters
+                name = place['name']
+                address = place['vicinity']
                 # Construct Google Maps navigation URL
                 place_location = place['geometry']['location']
                 nav_url = f"https://www.google.com/maps/dir/?api=1&destination={place_location['lat']},{place_location['lng']}"
-            # for place in nearby_places[:10]:  # Limit to 10 due to carousel limitations
-            #     name = place['name']
-            #     address = place['vicinity']
-            #     # Construct Google Maps navigation URL
-            #     place_location = place['geometry']['location']
-            #     nav_url = f"https://www.google.com/maps/dir/?api=1&destination={place_location['lat']},{place_location['lng']}"
                 
                 static_map_url = generate_static_map_url(place_location['lat'], place_location['lng'], api_key)
-                print(static_map_url)
+
 
             column = CarouselColumn(
                 thumbnail_image_url=static_map_url, # 加入這一行來顯示靜態地圖圖片
-                text=f'⭐{name}\n📌{address}', # 確保文字不超過60個字符
+                text=f'⭐{name[:30]}\n📌{address[:30]}', # 確保文字不超過60個字符
                 actions=[
                     URIAction(label='導航', uri=nav_url)
                 ]
