@@ -104,7 +104,7 @@ def handle_postback(event):
 
             column = CarouselColumn(
                 thumbnail_image_url=static_map_url, # 加入這一行來顯示靜態地圖圖片
-                text=f'⭐{name[:25]}\n📌{address[:30]}', # 確保文字不超過60個字符
+                text=f'⭐{name}\n📌{address}', # 確保文字不超過60個字符
                 actions=[
                     URIAction(label='導航', uri=nav_url)
                 ]
