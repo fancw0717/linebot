@@ -72,7 +72,7 @@ def handle_location_message(event):
 
 @handler.add(PostbackEvent)
 def handle_postback(event):
-    #user_id = event.source.user_id
+    user_id = event.source.user_id
     api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
     data = event.postback.data
     queries = dict(q.split("=") for q in data.split("&"))
@@ -111,14 +111,21 @@ def handle_postback(event):
                 carousel_columns.append(column)
 
             
+        #     carousel_template = CarouselTemplate(columns=carousel_columns)
+        #     template_message = TemplateSendMessage(
+        #         alt_text=f'附近的{places_names_chinese[place_type]}',
+        #         template=carousel_template
+        #     )
+        #     line_bot_api.reply_message(event.reply_token, template_message)
+        # else:
+        #     reply_text = f'附近沒有找到{places_names_chinese[place_type]}。'
+        #     line_bot_api.reply_message(event.reply_token, TextMessage(text=reply_text))
+
             carousel_template = CarouselTemplate(columns=carousel_columns)
-            template_message = TemplateSendMessage(
-                alt_text=f'附近的{places_names_chinese[place_type]}',
-                template=carousel_template
-            )
+            template_message = TemplateSendMessage(alt_text=f'附近的{place_description}', template=carousel_template)
             line_bot_api.reply_message(event.reply_token, template_message)
         else:
-            reply_text = f'附近沒有找到{places_names_chinese[place_type]}。'
+            reply_text = f'附近沒有找到{place_description}。'
             line_bot_api.reply_message(event.reply_token, TextMessage(text=reply_text))
 
 #———————————————————————————————————————————— 文字監聽 ————————————————————————————————————————————————————————————————————————————————————————————————————————
