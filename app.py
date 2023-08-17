@@ -113,20 +113,20 @@ def handle_postback(event):
 
 
 #
-            original_url = static_map_url  # 替换为你的长URL
-            short_url = shorten_with_tinyurl(original_url)
-#
+                # original_url = static_map_url  # 替换为你的长URL
+                # short_url = shorten_with_tinyurl(original_url)
+    #
 
 
 
-            column = CarouselColumn(
-                thumbnail_image_url=short_url, # 加入這一行來顯示靜態地圖圖片
-                text=f'⭐{name[:25]}\n📌{address[:30]}', # 確保文字不超過60個字符
-                actions=[
-                    URIAction(label='導航', uri=nav_url)
-                ]
-            )
-            carousel_columns.append(column)
+                column = CarouselColumn(
+                    thumbnail_image_url=static_map_url, # 加入這一行來顯示靜態地圖圖片
+                    text=f'⭐{name[:25]}\n📌{address[:30]}', # 確保文字不超過60個字符
+                    actions=[
+                        URIAction(label='導航', uri=nav_url)
+                    ]
+                )
+                carousel_columns.append(column)
 
             
             carousel_template = CarouselTemplate(columns=carousel_columns)
