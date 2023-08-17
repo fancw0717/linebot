@@ -84,7 +84,7 @@ def handle_postback(event):
         places_names_chinese = {'parking': '停車場', 'gas_station': '加油站','food':'美食','motorcycle_shop':'摩托車店'}
         if nearby_places:
             carousel_columns = []
-            for place in nearby_places[:10]:  # Limit to 10 due to carousel limitations
+            for place in nearby_places:  # Limit to 10 due to carousel limitations
                 name = place['name']
                 address = place.get('vicinity', '地址不詳')
                 # Construct Google Maps navigation URL
