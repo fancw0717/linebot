@@ -5,21 +5,26 @@ def get_motor_ptt():
     url = 'https://www.ptt.cc/bbs/biker/index.html'
     re = requests.get(url)
     soup = BeautifulSoup(re.text, 'html.parser')
-    tags = soup.find_all(class_='title')[:5]
-    content_list = []  # 創建一個列表來保存標題和連結
+    tags = soup.find_all(class_='title')[:7]
+    content_list = []
 
     for tag in tags:
-        title = tag.text
-        href = tag.find('a')['href']  # 获取<a>标签中的href属性
+        title = tag.text.strip()
+        
+        a_tag = tag.find('a')
+        href = a_tag['href'] if a_tag else None
+        if not href:
+            continue  # 如果找不到連結，則跳過此次循環
+        
         meta_div = tag.find_next('div', class_='meta')
-        date_tag = meta_div.find('div', class_='date')  # 在meta信息中找到日期标签
-        if date_tag:
-            date = date_tag.text.strip()  # 获取日期文本并去除首尾空格
-            content = f"日期: {date}\n標題: {title}\n連結: https://www.ptt.cc{href}\n"
-            content_list.append(content)  # 將標題和連結添加到列表中
-        else:
-            date = "日期未知"
-            content = f"日期: {date}\n標題: {title}\n連結: https://www.ptt.cc{href}\n"
-            content_list.append(content)  # 將標題和連結添加到列表中
-    
+        if not meta_div:
+            continue
+        
+        date_tag = meta_div.find('div', class_='date')
+        date = date_tag.text.strip() if date_tag else "未知日期"
+        
+        content = f"日期: {date}\n標題: {title}\n連結: https://www.ptt.cc{href}\n"
+        content_list.append(content)
+
     return content_list
+
