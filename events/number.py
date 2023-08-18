@@ -13,8 +13,11 @@ def get_motor_ptt():
         href = tag.find('a')['href']  # 获取<a>标签中的href属性
         meta_div = tag.find_next('div', class_='meta')
         date_tag = meta_div.find('div', class_='date')  # 在meta信息中找到日期标签
-        date = date_tag.text.strip()  # 获取日期文本并去除首尾空格
-        content = f"日期: {date}\n標題: {title}\n連結: https://www.ptt.cc{href}\n"
-        content_list.append(content)  # 將標題和連結添加到列表中
+        if date_tag:
+            date = date_tag.text.strip()  # 获取日期文本并去除首尾空格
+            content = f"日期: {date}\n標題: {title}\n連結: https://www.ptt.cc{href}\n"
+            content_list.append(content)  # 將標題和連結添加到列表中
+        else:
+            date = "日期未知"
 
     return content_list
