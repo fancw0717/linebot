@@ -19,5 +19,7 @@ def get_motor_ptt():
             content_list.append(content)  # 將標題和連結添加到列表中
         else:
             date = "日期未知"
-
+            content = f"日期: {date}\n標題: {title}\n連結: https://www.ptt.cc{href}\n"
+            content_list.append(content)  # 將標題和連結添加到列表中
+    
     return content_list
