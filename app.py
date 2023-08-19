@@ -70,6 +70,7 @@ def handle_location_message(event):
 
 
 #——————————————————————————————————— Handle postback event when user selects an option —————————————————————————————————————————————————————————————————————
+@handler.add(PostbackEvent)
 def handle_postback(event):
     user_id = event.source.user_id
     api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
@@ -118,6 +119,7 @@ def handle_postback(event):
         else:
             reply_text = f'附近沒有找到{place_description}。'
             line_bot_api.reply_message(event.reply_token, TextMessage(text=reply_text))
+
 # @handler.add(PostbackEvent)
 # def handle_postback(event):
 #     user_id = event.source.user_id
@@ -131,8 +133,7 @@ def handle_postback(event):
 
 
 #     if location and (place_type or keyword):
-#         radius = 1000 # This is your radius which you can adjust as needed.
-#         rank_by_distance = True  # Set this to True if you want results ranked by distance, else set to False
+#         radius = 1000 
 #         places_names_chinese = {'parking': '停車場',
 #                                  'gas_station': '加油站',
 #                                  'restaurant':'餐廳',
