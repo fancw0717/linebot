@@ -59,7 +59,7 @@ def generate_static_map_url(latitude, longitude, api_key):
 #         print(f"搜尋附近的地點失敗。狀態:", data['status'])
 #         return []
 
-def search_nearby_places(location, place_type=None, api_key="", keyword=None, rank_by_distance=True):
+def search_nearby_places(location, radius=1000, place_type=None, api_key="", keyword=None, rank_by_distance=False):
     base_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
     params = {
         "location": location,
@@ -69,7 +69,7 @@ def search_nearby_places(location, place_type=None, api_key="", keyword=None, ra
     if rank_by_distance:
         params["rankby"] = "distance"
     else:
-        params["radius"] = 1000  # or whatever radius you desire if not ranking by distance
+        params["radius"] = radius
     
     if place_type:
         params["type"] = place_type
