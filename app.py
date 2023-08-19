@@ -70,8 +70,6 @@ def handle_location_message(event):
 
 
 #——————————————————————————————————— Handle postback event when user selects an option —————————————————————————————————————————————————————————————————————
-
-@handler.add(PostbackEvent)
 def handle_postback(event):
     user_id = event.source.user_id
     api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
@@ -82,17 +80,18 @@ def handle_postback(event):
     place_type = queries.get('type', '')
     keyword = queries.get('keyword', '')
 
+    radius = 1000  # This is your radius which you can adjust as needed.
+    rank_by_distance = True  # Set this to True if you want results ranked by distance, else set to False
 
     if location and (place_type or keyword):
-        radius = 1000
-        places_names_chinese = {'parking': '停車場',
-                                 'gas_station': '加油站',
-                                 'restaurant':'餐廳',
-                                 '機車行':'機車行'}
-        place_description = places_names_chinese.get(place_type) or places_names_chinese.get(keyword)
-        nearby_places = search_nearby_places(location, radius, place_type, api_key, keyword)
+        nearby_places = search_nearby_places(location, radius, place_type, api_key, keyword, rank_by_distance)
 
-        
+        places_names_chinese = {'parking': '停車場',
+                                'gas_station': '加油站',
+                                'restaurant':'餐廳',
+                                '機車行':'機車行'}
+        place_description = places_names_chinese.get(place_type) or places_names_chinese.get(keyword)
+
         if nearby_places:
             carousel_columns = []
             for place in nearby_places[:10]:  # Limit to 10 due to carousel limitations
@@ -105,21 +104,70 @@ def handle_postback(event):
                 static_map_url = generate_static_map_url(place_location['lat'], place_location['lng'], api_key)
 
                 column = CarouselColumn(
-                    thumbnail_image_url=static_map_url, # 加入這一行來顯示靜態地圖圖片
-                    text=f'⭐{name[:25]}\n📌{address[:30]}', # 確保文字不超過60個字符
+                    thumbnail_image_url=static_map_url,  # Display static map image
+                    text=f'⭐{name[:25]}\n📌{address[:30]}',  # Ensure the text does not exceed 60 characters
                     actions=[
                         URIAction(label='導航', uri=nav_url)
                     ]
                 )
                 carousel_columns.append(column)
 
-            
             carousel_template = CarouselTemplate(columns=carousel_columns)
             template_message = TemplateSendMessage(alt_text=f'附近的{place_description}', template=carousel_template)
             line_bot_api.reply_message(event.reply_token, template_message)
         else:
             reply_text = f'附近沒有找到{place_description}。'
             line_bot_api.reply_message(event.reply_token, TextMessage(text=reply_text))
+# @handler.add(PostbackEvent)
+# def handle_postback(event):
+#     user_id = event.source.user_id
+#     api_key = "AIzaSyBuh_ZmBbKBjvtG95pGzaW2-bf77Vc2QoY"
+#     data = event.postback.data
+#     queries = dict(q.split("=") for q in data.split("&"))
+
+#     location = queries.get('query', '')
+#     place_type = queries.get('type', '')
+#     keyword = queries.get('keyword', '')
+
+
+#     if location and (place_type or keyword):
+#         radius = 1000 # This is your radius which you can adjust as needed.
+#         rank_by_distance = True  # Set this to True if you want results ranked by distance, else set to False
+#         places_names_chinese = {'parking': '停車場',
+#                                  'gas_station': '加油站',
+#                                  'restaurant':'餐廳',
+#                                  '機車行':'機車行'}
+#         place_description = places_names_chinese.get(place_type) or places_names_chinese.get(keyword)
+#         nearby_places = search_nearby_places(location, radius, place_type, api_key, keyword)
+
+        
+#         if nearby_places:
+#             carousel_columns = []
+#             for place in nearby_places[:10]:  # Limit to 10 due to carousel limitations
+#                 name = place['name']
+#                 address = place['vicinity']
+#                 # Construct Google Maps navigation URL
+#                 place_location = place['geometry']['location']
+#                 nav_url = f"https://www.google.com/maps/dir/?api=1&destination={place_location['lat']},{place_location['lng']}"
+                
+#                 static_map_url = generate_static_map_url(place_location['lat'], place_location['lng'], api_key)
+
+#                 column = CarouselColumn(
+#                     thumbnail_image_url=static_map_url, # 加入這一行來顯示靜態地圖圖片
+#                     text=f'⭐{name[:25]}\n📌{address[:30]}', # 確保文字不超過60個字符
+#                     actions=[
+#                         URIAction(label='導航', uri=nav_url)
+#                     ]
+#                 )
+#                 carousel_columns.append(column)
+
+            
+#             carousel_template = CarouselTemplate(columns=carousel_columns)
+#             template_message = TemplateSendMessage(alt_text=f'附近的{place_description}', template=carousel_template)
+#             line_bot_api.reply_message(event.reply_token, template_message)
+#         else:
+#             reply_text = f'附近沒有找到{place_description}。'
+#             line_bot_api.reply_message(event.reply_token, TextMessage(text=reply_text))
 
 #———————————————————————————————————————————— 文字監聽 ————————————————————————————————————————————————————————————————————————————————————————————————————————
 
